@@ -4,6 +4,8 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.KiwiPage;
@@ -41,9 +43,57 @@ public class Kiwi {
             ReusableMethods.koordinatTiklamaMethodu(550,2060,300);
         }
 
-// Trip type,one way olarak secilir
-// kalkis ulkesi secenegine tiklanir ve default olan ulke kaldirilir
-// varis ulkesi secenegine tiklanir ve gidilecek ulke girilir
+     // Trip type,one way olarak secilir
+        Thread.sleep(2000);
+        page.returnButonu.click();
+        page.oneWayButonu.click();
+
+       // kalkis ulkesi secenegine tiklanir ve default olan ulke kaldirilir
+        Thread.sleep(2000);
+        page.fromButonu.click();
+        Thread.sleep(2000);
+        page.silmeButonu.click();
+
+
+        // kalkis yapilacak ulke/sehir girilir ve sec e tiklanir
+        page.ulkemetinKutusuu.click();
+
+        if (driver.isKeyboardShown()){
+            driver.getKeyboard().pressKey("Ankara");
+        }else {
+            page.ulkemetinKutusuu.sendKeys("Ankara");
+            }
+
+        Thread.sleep(2000);
+        page.kalkisVarisUlkesiButonu.click();
+        Thread.sleep(2000);
+        page.secButonu.click();
+
+
+       // varis ulkesi secenegine tiklanir ve gidilecek ulke girilir
+        Thread.sleep(2000);
+        page.tobutonu.click();
+
+        if (driver.isKeyboardShown()){
+            driver.getKeyboard().pressKey("Frankfurt");
+        }else {
+            page.ulkemetinKutusuu.sendKeys("Frankfurt");
+        }
+
+        Thread.sleep(2000);
+        page.kalkisVarisUlkesiButonu.click();
+        Thread.sleep(2000);
+        page.secButonu.click();
+
+
+
+
+
+
+
+
+
+
 // gidis tarihi 28 Mart olarak secilir ve set date e tiklanir
 // search butonuna tiklanir
 // en ucuz ve aktarmasiz filtrelemeleri yapilir
